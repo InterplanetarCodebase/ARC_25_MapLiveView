@@ -1,0 +1,7 @@
+#Ignore .venv and .vscode directories
+.venv/
+.vscode/
+# Ignore JSON files
+*.json
+# Ignore Python bytecode files
+*.pyc
