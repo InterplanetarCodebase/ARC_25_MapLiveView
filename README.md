@@ -1,13 +1,13 @@
-# 🛰️ ARC_25_MapLiveView: Live GPS Tracking Map Viewer
+# ARC_25_MapLiveView: Live GPS Tracking Map Viewer
+
+**_Note: This was tested for [this](https://github.com/InterplanetarCodebase/Rover_GPS_Tracking) flutter app done by [me](https://github.com/easynotsoeasy). A different version of the app was created and it may not work with that app._**
 
 This project provides a complete system for visualizing real-time GPS coordinates, sent from a mobile device (e.g., a Flutter app), on a desktop map interface. It consists of two main components:
-
-**This was tested for this flutter app done by me. Syfe Created another version of the app and it may not work with that app**
 
 1.  **`receiver_server.py`**: A lightweight Flask web server designed to receive GPS data via HTTP POST requests.
 2.  **`mapviewer.py`**: A Python Tkinter application that reads the data collected by the server and displays the location on an interactive Google Map, showing the live position and tracking path.
 
-## ✨ Features
+## Features
 
 - **Real-Time GPS Visualization**: See location updates live on a map.
 - **Web Server Receiver**: A simple Flask server to accept coordinates from any web-enabled device.
@@ -17,7 +17,7 @@ This project provides a complete system for visualizing real-time GPS coordinate
 - **Compatibility**: Designed to work seamlessly with mobile applications (like Flutter) that can send HTTP requests.
 - **Standalone**: The server and viewer are independent and communicate via a local JSON file, making the system robust.
 
-## ⚙️ How It Works
+## How It Works
 
 The data flows through the system in a simple, effective sequence:
 
@@ -41,7 +41,7 @@ The data flows through the system in a simple, effective sequence:
                                                                                     +------------------+
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these steps to get the system up and running on your local machine.
 
@@ -111,7 +111,7 @@ The desktop application window will appear, initially centered on the default co
 
 ### Step 3: Send GPS Data to the Server
 
-Now, you need to send GPS data from your mobile app or another tool (like `curl` or Postman) to the server.
+Now, you need to send GPS data from your mobile app to the server.
 
 - **Endpoint**: `http://YOUR_COMPUTER_IP:5000/send-coordinates`
 - **Method**: `POST`
@@ -127,20 +127,3 @@ Now, you need to send GPS data from your mobile app or another tool (like `curl`
   ```
 
 You can find your computer's local IP address by running `ipconfig` (Windows) or `ifconfig`/`ip addr` (macOS/Linux).
-
-#### Example using `curl`:
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"latitude": 23.8103, "longitude": 90.4125, "accuracy": 5}' [http://192.168.1.101:5000/send-coordinates](http://192.168.1.101:5000/send-coordinates)
-```
-
-As soon as you send data, the server will save it, and the map viewer will automatically update to show the new location.
-
-## 🌐 Server API Endpoints
-
-The `receiver_server.py` provides the following endpoints:
-
-- `POST /send-coordinates`: The main endpoint for receiving GPS data.
-- `GET /get-coordinates`: Returns the last received GPS coordinates in JSON format.
-- `GET /status`: Provides a status report of the server, including the last update time.
-- `GET /health`: A simple health check endpoint that returns a `200 OK` if the server is running.
